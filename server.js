@@ -11,8 +11,8 @@ const options = {
   cert: fs.readFileSync('certificato.pem')
 };
 
-https.createServer(options, app).listen(8000,'192.168.1.2' || 'localhost',function() {
-  console.log('Application worker ' + process.pid + ' started...');
+https.createServer(options, app).listen(process.env.PORT || 4000, function(){
+  console.log('Your node js server is running');
 }
 );
 
