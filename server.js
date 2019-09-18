@@ -2,7 +2,7 @@
  
 var express = require('express');
 var app = express();
-//const path = require('path');
+const path = require('path');
 var https = require('https');
 var fs = require('fs');
 
@@ -11,13 +11,13 @@ const options = {
   cert: fs.readFileSync('certificato.pem')
 };
 
+//app.get('/', function(req, res) {
+//  res.sendFile(path.join(__dirname, 'index.html'));
+//});
+
+app.use(express.static('./'));
+
 https.createServer(options, app).listen(process.env.PORT || 4000, function(){
   console.log('Your node js server is running');
 }
 );
-
-app.use(express.static('./'));
-
-//app.get('/',function(req,res) {
-//  res.sendFile(path.join(__dirname+'/index.html'));
-//});
