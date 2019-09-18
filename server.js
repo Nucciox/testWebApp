@@ -11,11 +11,7 @@ const options = {
   cert: fs.readFileSync('certificato.pem')
 };
 
-//app.get('/', function(req, res) {
-//  res.sendFile(path.join(__dirname, 'index.html'));
-//});
-
-app.use(express.static('./'));
+app.use(express.static(__dirname));
 
 https.createServer(options, app).listen(process.env.PORT || 4000, function(){
   console.log('Your node js server is running');
